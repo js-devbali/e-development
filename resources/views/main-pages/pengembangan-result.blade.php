@@ -1,0 +1,104 @@
+@extends('layouts.main-layout')
+
+@section('title', 'Pengembangan')
+
+@push('css')
+    <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet" crossorigin="anonymous">
+@endpush
+
+@section('content')
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h3 col-lg-auto text-center text-md-start">E-Development</h1>
+        <div class="col-auto ml-auto text-right mt-n1">
+            <nav aria-label="breadcrumb text-center">
+                <ol class="breadcrumb bg-transparent p-0 mt-1 mb-0">
+                    <li class="breadcrumb-item"><a class="text-decoration-none" href="{{ route('Dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pengembangan</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header text-end">
+                    <a href="{{ route('Tambah Pengembangan') }}" class="btn btn-primary my-auto"><i class="fas fa-plus"></i> Tambah Pengembangan</a>
+                </div>
+                <div class="card-body">
+                    <table id="tableHistory" class="table table-responsive-sm table-bordered table-hover small">
+                        <thead class="text-center bg-primary">
+                            <tr>
+                                <th>No</th>
+                                <th>Kompetensi</th>
+                                <th>Jenis Kompetensi</th>
+                                <th>Nilai</th>
+                                <th>Target</th>
+                                <th>Metode Pengembangan</th>
+                                <th>Aktivitas</th>
+                                <th>Jadwal</th>
+                                <th>Butir Aktifitas</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td>1</td>
+                                <td>Continuous Learning Improvment</td>
+                                <td>Kompetensi Inti</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>Menerapkan Pembelajaran dalam Situasi Nyata</td>
+                                <td>Membuat Google Form/Sheet terkait pengumpulan data</td>
+                                <td>Setiap Bulan</td>
+                                <td>SC Inovasi google sheet, google form yang telah dilakukan untuk membantu pelaksanaan pekerjaan</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Continuous Learning Improvment</td>
+                                <td>Kompetensi Inti</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>Budgeting (Penganggaran)</td>
+                                <td>Membuat rencana kegiatan dan penggunaan anggaran biaya HC tahun 2021</td>
+                                <td>Setiap Bulan</td>
+                                <td>Timeline kegiatan team HC</td>
+                            </tr>
+                        </tbody>
+                    </table>  
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@push('js')
+    <script src="{{ asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#e-kinerja').addClass('menu-open');
+            $('#e-kinerja-link').addClass('active');
+            $('#kinerja-pegawai').addClass('active');
+
+            $("#tableHistory").DataTable({
+                "responsive": false, "lengthChange": true, "autoWidth": false,
+                "oLanguage": {
+                    "sSearch": "Cari:",
+                    "sZeroRecords": "Data diklat tidak ditemukan",
+                    "sSearchPlaceholder": "Cari data diklat ...",
+                    "infoEmpty": "Menampilkan 0 Data",
+                    "infoFiltered": "(dari _MAX_ Data)",
+                    "sLengthMenu": "Tampilkan _MENU_ data",
+                },
+                "language": {
+                    "paginate": {
+                        "previous": 'Sebelumnya',
+                        "next": 'Berikutnya'
+                    },
+                    "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+                },
+            });
+        });
+    </script>
+@endpush
